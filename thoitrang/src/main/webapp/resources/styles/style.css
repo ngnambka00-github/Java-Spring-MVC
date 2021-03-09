@@ -1,0 +1,429 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+* {
+	padding: 0px;
+	margin: 0px;
+}
+
+html, body {
+	width: 100%;
+	height: 100vh;
+	font-family: 'Roboto', sans-serif;
+}
+
+/*==================================================*/
+/* Bắt đầu CSS cho page trang chủ */
+#header {
+	height: 100vh;
+	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+		url("../images/bg.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
+	position: relative;
+}	
+#header .header__box__icon {
+	width: 60px;
+	height: 35px;
+	box-sizing: border-box;
+}
+#header .header__box__icon img{
+	width: 100%;
+	transform: scale(1.6);
+}
+
+#header .dropdown-custom a,
+#header .nav-collapse-custom a {
+	color: #bbbbbb !important;
+}
+
+#header .cart {
+	transform: scale(1.2) !important;
+}
+
+#header .nav-collapse-custom a:hover,
+ .active > a,
+#header .dropdown-custom a:hover {
+	color: white !important;
+	background: transparent !important;
+	text-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+}
+#header .nav-collapse-custom a#icon-user {
+	display: block;
+    width: 35px;
+    height: 35px;
+    background: red !important;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 35px;
+    padding: 0px;
+    text-transform: uppercase;
+    margin-right: 10px;
+}
+#header .header__event {
+	position: absolute;
+	top: 50%; left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	color: #ccc;
+}
+#header .header__event > h1 {
+	font-size: 50px;
+	margin: 15px 0px;
+	text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.4);
+}
+
+#header .header__event > span {
+	font-size: 20px;
+	font-weight: 300;
+}
+
+#header .header__event > button {
+	letter-spacing: 3px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+@media screen and (max-width: 776px) {
+	#header .header__event > h1 {
+		font-size: 40px;
+	}
+	
+	#header .header__event > span {
+		font-size: 15px;
+	}
+	#header .header__event > button {
+		letter-spacing: 2px;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}
+
+@media screen and (max-width: 560px) {
+	#header .header__event > h1 {
+		font-size: 35px;
+	}
+	
+	#header .header__event > span {
+		font-size: 15px;
+		font-weight: 400;
+	}
+	#header .header__event > button {
+		letter-spacing: 1px;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+}
+
+#infor-service {
+	margin-top: 50px;
+}
+
+#infor-service .infor-service--item { 
+	padding-top: 30px;
+}
+
+#infor-service .infor-service--item .infor-service--item__image { }
+
+#infor-service .infor-service--item .infor-service--item__title { 
+	font-size: 32px;
+	font-weight: 450;
+}
+
+#infor-service .infor-service--item .infor-service--item__description { }
+
+#infor-service .infor-service__item {
+	display: flex;
+	flex-direction: column;
+}
+
+
+
+#view-product {
+	margin-top: 80px;	
+}
+
+#view-product .view-product--title {
+	margin-bottom: 30px;
+}
+#view-product a {
+	text-decoration: none;	
+}
+#view-product .view-product--title span{ 
+	display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 38px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+
+#view-product a .view-product--item { 
+	margin-top: 20px;
+    box-shadow: 0 2px 5px 3px rgb(0 0 0 / 10%);
+}
+
+#view-product a .view-product--item:hover {
+	box-shadow: 0 5px 10px 5px rgb(0 0 0 / 20%);
+	border: 1px solid #656565b8 !important;
+}
+
+#view-product a .view-product--item img {
+	height: 256px;	
+	object-fit: contain;
+}
+
+#view-product a .view-product--item .view-product--item__title { 
+	display: block;
+	text-align: center;
+	color: #111;
+}
+
+#view-product a .view-product--item .view-product--item__price {
+	display: block;
+	text-align: center;
+	font-size: 18px;
+	color: red;
+}
+
+.icon-48 {
+	width: 48px;
+	height: 48px;
+}
+
+#contact-footer {
+	color: white;
+	background: url("../images/footer-background.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	margin-top: 80px;
+}
+#contact-footer .contact-footer--item { 
+	padding-bottom: 20px;
+}
+#contact-footer .contact-footer--item .contact-footer--item__title { 
+	text-align: center;
+	font-size: 32px;
+	font-weight: 400;
+	margin-top: 20px;
+	margin-bottom: 5px;
+}
+#contact-footer .contact-footer--item .contact-footer--item__infor {
+	margin-bottom: 5px;
+}
+/* Kết thúc phần CSS trang chủ */
+
+/* bắt đầu CSS cho page Chi tiết */
+.header--chitiet--page {
+	background-image: none !important;
+    height: auto !important;
+}
+.header--chitiet--page > nav {
+	background-color: #376b9a !important;
+    border-radius: 0 0 8px 8px !important;
+    box-shadow: 2px 2px 10px 5px rgb(133 133 133 / 72%) !important;
+}
+
+#content--chitiet {
+	
+}
+#content--chitiet img {
+	width: 100%;
+	object-fit: cover;
+}
+
+/* Kết thúc phần CSS cho page Chi tiết */
+
+/*==================================================*/
+/* bắt đầu CSS cho page đăng nhập */
+#body-login {
+	background-color: #00909C;
+	width: 100%;
+	height: 100%;
+}
+
+#body-flex-login {
+	display: flex;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+}
+
+#container-login {
+	display: flex;
+	width: 820px;
+	height: 610px;
+	background-color: white;
+}
+
+#container-login-left {
+	width: 384px;
+	height: 610px;	
+	background-image: url("../images/bg-dang-nhap.jpg");
+	background-size: cover;
+	background-position: center center;
+	
+	position: relative;
+}
+
+#container-login-left::before {
+	content: '';
+	width: 100%;
+	height: 100%;
+	background: #fa454585;
+	position: absolute;
+	top: 0; left: 0;
+	z-index: 1;
+}
+
+#container-login-left .content {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;	
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#container-login-left .content .header-login{
+	margin-top: 160px;
+	text-align: center;
+}
+
+#container-login-left .content .header-login span:nth-child(1) {
+	font-size: 48px;
+	color: white;
+}
+
+#container-login-left .content .header-login span:nth-child(3) {
+	font-size: 14px;
+	color: white;
+	opacity: 0.7;
+}
+
+#container-login-left .content .footer-login {
+	width: 100%;
+	margin-bottom: 50px;
+}
+
+#container-login-left .content .footer-login p img {
+	width: 20px;
+	height: 20px;
+	position: relative;
+	top: 4px;
+}
+
+#container-login-left .content .footer-login p {
+	font-size: 14px;
+	padding: 5px 0px;
+	color: white;	
+}
+
+#container-login-right {
+	padding: 0px 20px;
+	width: calc(100% - 384px);
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+#container-login-right .header-top-right {
+	font-size: 20px;
+	color: grey;
+	margin-top: 25px;
+	cursor: pointer;
+}
+.actived {
+	color: #c64642;
+}
+
+#container-login-right .form-middle {
+	
+}
+#container-login-right .form-middle input[type="text"], 
+#container-login-right .form-middle input[type="password"]{
+	margin-top: 8px;
+}
+.text-input {
+	width:100%;
+	height: 38px;
+	border: none;
+	outline: none;
+	font-size: 15px;
+	color: #111;
+}
+
+.input-icon-email {
+	background-image: url('../images/icon-envelope.png');
+	background-size: 25px 25px;
+	background-position: 8px 8px;
+	background-repeat: no-repeat;
+	background-color: #D8D8D8;
+	box-sizing: border-box;
+	padding-left: 45px;
+}
+
+.input-icon-password{ 
+	background-image: url('../images/icon-padlock.png');
+	background-size: 20px 20px;
+	background-position: 6px 6px;
+	background-repeat: no-repeat;
+	background-color: #D8D8D8;
+	box-sizing: border-box;
+	padding-left: 45px;
+}
+
+.input-icon-email::placeholder,
+.input-icon-password::placeholder {
+	color: #555;
+}
+
+#container-login-right .form-middle #btn-dang-ky, 
+#container-login-right .form-middle #btn-dang-nhap  {
+	display: block;
+	width: 100%;
+	height: 40px;
+	margin-top: 15px;
+	
+	background-color: #009688;
+	
+	color: white;
+	line-height: 40px;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	text-transform: uppercase;
+	box-shadow: 0px 3px 6px 1px rgba(0, 0, 0, 0.3);
+}
+#container-login-right .form-middle #btn-dang-nhap:hover {
+	color: black;
+}
+
+.display-none {
+	display: none;
+}
+
+#container-login-right .icon-bottom {
+	align-self: flex-end;
+	margin-bottom: 20px;
+}
+
+#container-login-right .icon-bottom img{ 
+	width: 30px;
+	height: 30px;
+	object-fit: cover;
+	margin-left: 10px;
+}
+/* Kết thúc CSS cho phần đăng nhập*/
+
+

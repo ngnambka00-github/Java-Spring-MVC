@@ -5,30 +5,47 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:jee="http://www.springframework.org/schema/jee"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
-		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-4.3.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-4.3.xsd
 		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.3.xsd
-		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
-
-	<bean id="GiamDoc" class="com.ngnam.entity.GiamDoc">
-		<constructor-arg name="chucVu" type="java.lang.String" value="Giám đốc IT"/>
-		<constructor-arg name="tenGD" type="java.lang.String" value="Trần Minh Thanh"/>
-		<constructor-arg name="diaChi" type="java.lang.String" value="Hải Dương"/>
-		<constructor-arg name="tuoi" type="int" value="30"/>
+	<!-- Khai báo dataSource khai báo các kết nối JDBC -->
+	<bean id="dbThoiTrang" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/dbminishop"/>
+		<property name="username" value="root"/>
+		<property name="password" value="dgsMUE35"/>
 	</bean>
 	
-	<bean id="CustomLoader" class="com.ngnam.controller.CustomLoader" autowire="byType"></bean>
-	
-	<bean id="NhanVien" class="com.ngnam.entity.NhanVien" autowire="byType">
-		
+	<!-- LocalSessionFactoryBean trong thư viện Hibernate core -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dbThoiTrang"/>
+		<!-- Khi báo các tên định danh có sử dụng trong project -->
+		<property name="packagesToScan" value="com.ngnam.entity"/>
+		<property name="hibernateProperties">
+			<props>
+				<!-- Xác định để thực thi câu truy vẫn của ai: MySQL, Oracle, hay SQLServer-->
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				
+				<!-- show_sql = true là cho phép hiển thị các câu truy vấn trên trình duyệt -->
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
 	</bean>
 	
 	
-	
-	<bean id="SinhVien" class="com.ngnam.entity.SinhVien" scope="prototype">
-		
+	<!-- Tạo ra transaction Manager -->
+	<bean id="transactionManager" 
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
+	<!-- Cần scan TX để có thể sử dụng các tên định danh của TransactionManager -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
 	
 </beans>
