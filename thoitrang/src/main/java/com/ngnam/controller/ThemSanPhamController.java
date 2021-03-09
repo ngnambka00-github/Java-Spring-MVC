@@ -22,7 +22,11 @@ public class ThemSanPhamController {
 	public String getDefault(ModelMap modelMap) {
 		List<SanPham> listSanPham = sanPhamService.layDanhSachSanPham(0, 5);
 		modelMap.addAttribute("listSanPhamLimit", listSanPham);
-		modelMap.addAttribute("tongsosanpham", sanPhamService.tongSoLuongSanPham());
+		
+		int tongSoSanPham = sanPhamService.tongSoLuongSanPham();
+		modelMap.addAttribute("tongsosanpham", Math.ceil(tongSoSanPham / 5.0));
+		
+		System.out.println(tongSoSanPham);
 		return "themsanpham";
 	}
 }

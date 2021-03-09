@@ -273,12 +273,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
 	
 	<nav aria-label="Page navigation example">
-	  <ul class="pagination pagination-sanpham" data-page-total="20">
-	    <li class="page-item pagination-item-sanpham" data-page-number="0"><a class="page-link" href="#">Previous</a></li>
+	  <ul class="pagination pagination-sanpham" data-page-total="${ tongsosanpham }">
+	    <li class="page-item pagination-item-sanpham disabled page-link" data-page-number="1"><a class="page-link" href="#">Previous</a></li>
 	    <li class="page-item pagination-item-sanpham active" data-page-number="1"><a class="page-link" href="#">1</a></li>
 	    <li class="page-item pagination-item-sanpham" data-page-number="2"><a class="page-link" href="#">2</a></li>
 	    <li class="page-item pagination-item-sanpham" data-page-number="3"><a class="page-link" href="#">3</a></li>
-	    <li class="page-item pagination-item-sanpham" data-page-number="4"><a class="page-link" href="#">Next</a></li>
+	    <li class="page-item pagination-item-sanpham" data-page-number="3"><a class="page-link" href="#">Next</a></li>
 	  </ul>
 	</nav>
 	<!-- Kết thúc phần form thêm các sản phẩm mơis -->
