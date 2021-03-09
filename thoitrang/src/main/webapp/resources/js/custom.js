@@ -193,9 +193,38 @@ $(document).ready(() => {
 		iconSoLuong.text(String(soLuongHienTai));
 	});
 	
-	$('.pagination-item-sanpham').click(function() {
-		let pageNumber = parseInt($(this).data('pageNumber'));
 	
+	// Code design pagination after click 
+	function designPagination(currentPage, totalPage) {
+		let wrapper = $(".pagination-sanpham");
+		var content = '';
+		if (currentPage === 1){
+			content += `<li class="page-item pagination-item-sanpham disabled" data-page-number="1"><a class="page-link" href="#">Previous</a></li>
+				<li class="page-item pagination-item-sanpham active" data-page-number="1"><a class="page-link" href="#">1</a></li>
+				<li class="page-item pagination-item-sanpham" data-page-number="2"><a class="page-link" href="#">2</a></li>
+				<li class="page-item pagination-item-sanpham" data-page-number="3"><a class="page-link" href="#">3</a></li>
+				<li class="page-item pagination-item-sanpham" data-page-number="2"><a class="page-link" href="#">Next</a></li>`;
+		} else if (currentPage === totalPage) {
+			content += `<li class="page-item pagination-item-sanpham" data-page-number="${currentPage-1}"><a class="page-link" href="#">Previous</a></li>
+				<li class="page-item pagination-item-sanpham" data-page-number="${currentPage-2}"><a class="page-link" href="#">${currentPage-2}</a></li>
+				<li class="page-item pagination-item-sanpham" data-page-number="${currentPage-1}"><a class="page-link" href="#">${currentPage-1}</a></li>
+				<li class="page-item pagination-item-sanpham active" data-page-number="${currentPage}"><a class="page-link" href="#">${currentPage}</a></li>
+				<li class="page-item pagination-item-sanpham disabled" data-page-number="${currentPage}"><a class="page-link" href="#">Next</a></li>`;
+		} else {
+			content = `<li class="page-item pagination-item-sanpham" data-page-number="${currentPage-1}"><a class="page-link" href="#">Previous</a></li>
+				<li class="page-item pagination-item-sanpham" data-page-number="${currentPage-1}"><a class="page-link" href="#">${currentPage-1}</a></li>
+				<li class="page-item pagination-item-sanpham active" data-page-number="${currentPage}"><a class="page-link" href="#">${currentPage}</a></li>
+				<li class="page-item pagination-item-sanpham" data-page-number="${currentPage+1}"><a class="page-link" href="#">${currentPage+1}</a></li>
+				<li class="page-item pagination-item-sanpham" data-page-number="${currentPage+1}"><a class="page-link" href="#">Next</a></li>`;
+		}
+		 
+		wrapper.html(content);
+	}
+
+	$('body').on('click', '.pagination-item-sanpham', function() {
+		let pageNumber = parseInt($(this).data('pageNumber'));
+		let totalPage = parseInt($(this).closest('ul').data('pageTotal'));
+
 		$.ajax({
 			url: '/thoitrang/api/PhanTrangSanPham',
 			type: 'GET', 
@@ -221,9 +250,11 @@ $(document).ready(() => {
 						</tr>`;
 				}
 				$("#content-them-san-pham").html(content);
+				designPagination(pageNumber, totalPage);
 			}
 		});
 	});
+	
 	
 });
 
